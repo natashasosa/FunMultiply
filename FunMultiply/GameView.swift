@@ -15,7 +15,7 @@ struct GameView: View {
     
     @State private var score = 0
     @State private var multiplier = 1
-    @State private var levelText = ""
+ 
     @State private var correctAnswer = 0
     @State private var userAnswer = 0
     
@@ -32,7 +32,8 @@ struct GameView: View {
             }
             
             Section {
-                Text(levelText + "how much is \(table) x \(multiplier)? correct answer = " + "\(correctAnswer)")
+                Text("Question \(currentQuestionIndex + 1) of \(numberOfQuestions): ")
+                Text("How much is \(table) x \(multiplier)?")
             }
             
             Section {
@@ -46,9 +47,11 @@ struct GameView: View {
 
             
             
-            Text("Question \(currentQuestionIndex + 1) of \(numberOfQuestions)")
             
-            Text("Your score: \(score)")
+            Section {
+                Text("Your score: \(score)")
+            }
+            
             
             .alert(isPresented: $isGameOver) {
                 Alert(
@@ -97,16 +100,15 @@ struct GameView: View {
         switch selectedLevel {
         case "Easy":
             multiplier = Int.random(in: 1...3)
-            levelText = "Easy level: "
             
         case "Medium":
             multiplier = Int.random(in: 4...6)
-            levelText = "Medium level: "
+        
         case "Hard":
             multiplier = Int.random(in: 7...10)
-            levelText = "Hard level: "
+        
         default:
-            levelText = "No level selected"
+            multiplier = 1
         }
         
         correctAnswer = table * multiplier
