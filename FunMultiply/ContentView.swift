@@ -12,8 +12,8 @@ struct ContentView: View {
     @State private var table = 2
     @State private var questionRange = [5, 10, 20]
     @State private var numberOfQuestions = 5
-    @State private var levels = ["Easy", "Medium", "Hard"]
-    @State private var selectedLevel = "Easy"
+    //@State private var levels = ["Easy", "Medium", "Hard"]
+    //@State private var selectedLevel = "Easy"
     @State private var multipliers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     
     //@State private var showingGame = false
@@ -39,7 +39,7 @@ struct ContentView: View {
                     }
                 }
                 
-                Section {
+                /*Section {
                     Text("Choose a level o difficulty")
                         .font(.headline)
                     Picker("Level: ", selection: $selectedLevel) {
@@ -48,12 +48,13 @@ struct ContentView: View {
                         }
                         
                     }
-                }
+                }*/
+                
                 
                 NavigationLink("Start", destination: GameView(
                                     table: table,
-                                    numberOfQuestions: numberOfQuestions,
-                                    selectedLevel: selectedLevel
+                                    numberOfQuestions: numberOfQuestions//,
+                                    //selectedLevel: selectedLevel
                                 ))
             }
             .navigationTitle("Fun multiply")

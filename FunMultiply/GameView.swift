@@ -11,7 +11,7 @@ struct GameView: View {
     
     let table: Int
     let numberOfQuestions: Int
-    let selectedLevel: String
+    //let selectedLevel: String
     
     @State private var score = 0
     @State private var multiplier = 1
@@ -28,7 +28,7 @@ struct GameView: View {
         Form {
             
             Section {
-                Text("You will answer \(numberOfQuestions) \(selectedLevel.lowercased()) questions on the table of \(table)")
+                Text("You will answer \(numberOfQuestions) questions on the table of \(table)")
             }
             
             Section {
@@ -50,6 +50,7 @@ struct GameView: View {
             
             Section {
                 Text("Your score: \(score)")
+                
             }
             
             
@@ -57,16 +58,11 @@ struct GameView: View {
                 Alert(
                     title: Text("Game Over"),
                     message: Text("Your final score is \(score)"),
-                    primaryButton: .default(Text("Start over")) {
+                    
+                    dismissButton: .default(Text("Play again")) {
+                        //Reset the game and navigate back to ContentView
                         resetGame()
-                    },
-                    secondaryButton: .default(Text("Back")) {
-                        NavigationLink("", destination: ContentView())
                     }
-                    //dismissButton: .default(Text("OK")) {
-                        // Reset the game and navigate back to ContentView
-                        
-                    //},
                 
                 )
                 
@@ -77,7 +73,7 @@ struct GameView: View {
         
 
         .onAppear {
-            playRound(table: table, selectedLevel: selectedLevel)
+            playRound(/*, selectedLevel: selectedLevel*/)
         }
     }
     
@@ -89,15 +85,15 @@ struct GameView: View {
         
         if currentQuestionIndex < numberOfQuestions - 1 {
             currentQuestionIndex += 1
-            playRound(table: table, selectedLevel: selectedLevel)
+            playRound(/*, selectedLevel: selectedLevel*/)
         } else {
             gameOver()
         }
     }
     
-    func playRound(table: Int, selectedLevel: String) {
+    func playRound(/*, selectedLevel: String*/) {
         
-        switch selectedLevel {
+        /*switch selectedLevel {
         case "Easy":
             multiplier = Int.random(in: 1...3)
             
@@ -109,8 +105,8 @@ struct GameView: View {
         
         default:
             multiplier = 1
-        }
-        
+        }*/
+        multiplier = Int.random(in: 1...10)
         correctAnswer = table * multiplier
     }
     
@@ -122,7 +118,7 @@ struct GameView: View {
         isGameOver = false
         score = 0
         currentQuestionIndex = 0
-        playRound(table: table, selectedLevel: selectedLevel)
+        playRound(/*, selectedLevel: selectedLevel*/)
     
     }
 }
@@ -136,6 +132,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(table: 2, numberOfQuestions: 10, selectedLevel: "Easy")
+        GameView(table: 2, numberOfQuestions: 10/*, selectedLevel: "Easy"*/)
     }
 }
