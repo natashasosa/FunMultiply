@@ -23,7 +23,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-            
+                Image("funmultiply-background-3")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
                 VStack(spacing: 30) {
                     Text("Fun Multiply")
                         .font(.largeTitle.weight(.black))
@@ -70,6 +73,7 @@ struct ContentView: View {
                         .init(color: Color(red: 0.75, green: 0.09, blue: 0.98), location: 0.6)
                     ], center: .top, startRadius: 100, endRadius: 700))
                     .clipShape(RoundedRectangle(cornerRadius: 30))
+                    .shadow(radius: 3)
                     
                     Spacer()
                     
@@ -80,6 +84,7 @@ struct ContentView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundColor(.white)
                         .font(.title3 .weight(.bold))
+                        .shadow(radius: 1)
                     
                     Spacer()
                         
