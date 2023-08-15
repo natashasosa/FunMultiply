@@ -9,15 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var tableRange = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     @State private var table = 2
     @State private var questionRange = [5, 10, 20]
     @State private var numberOfQuestions = 5
-    //@State private var levels = ["Easy", "Medium", "Hard"]
-    //@State private var selectedLevel = "Easy"
-    @State private var multipliers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    
-    //@State private var showingGame = false
-    
+ 
     var body: some View {
         NavigationView {
             
@@ -25,37 +21,26 @@ struct ContentView: View {
                 Section {
                     Text("What table do you want to practice?")
                         .font(.headline)
-                    Stepper("\(table)", value: $table, in: 2...12)
+                    Picker("", selection: $table) {
+                        ForEach(tableRange, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
                 }
                 
                 Section {
                     Text("How many questions do you want to answer?")
                         .font(.headline)
-                    Picker("I want:", selection: $numberOfQuestions) {
+                    Picker("", selection: $numberOfQuestions) {
                         ForEach(questionRange, id: \.self) {
                             Text("\($0) questions")
                         }
-                        
                     }
+                    .pickerStyle(.segmented)
                 }
                 
-                /*Section {
-                    Text("Choose a level o difficulty")
-                        .font(.headline)
-                    Picker("Level: ", selection: $selectedLevel) {
-                        ForEach(levels, id: \.self) {
-                            Text($0)
-                        }
-                        
-                    }
-                }*/
-                
-                
-                NavigationLink("Start", destination: GameView(
-                                    table: table,
-                                    numberOfQuestions: numberOfQuestions//,
-                                    //selectedLevel: selectedLevel
-                                ))
+                NavigationLink("Start", destination: GameView(table: table,numberOfQuestions: numberOfQuestions))
             }
             .navigationTitle("Fun multiply")
         }
