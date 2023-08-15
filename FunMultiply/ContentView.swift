@@ -14,7 +14,6 @@ struct ContentView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
     }
     
-    
     @State private var tableRange = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     @State private var table = 2
     @State private var questionRange = [5, 10, 20]
@@ -37,7 +36,7 @@ struct ContentView: View {
                         
                         Section {
                             Text("What table do you want to practice?")
-                                .font(.title3.weight(.semibold))
+                                .font(.title3.weight(.bold))
                                 .foregroundColor(.white)
                             
                             Picker("", selection: $table) {
@@ -70,7 +69,7 @@ struct ContentView: View {
                     .padding(.horizontal, 10)
                     .background(RadialGradient(stops: [
                         .init(color: Color(red: 0.98, green: 0.67, blue: 0.09), location: 0.0),
-                        .init(color: Color(red: 0.75, green: 0.09, blue: 0.98), location: 0.6)
+                        .init(color: Color(red: 0.75, green: 0.09, blue: 0.98), location: 0.8)
                     ], center: .top, startRadius: 100, endRadius: 700))
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .shadow(radius: 3)
