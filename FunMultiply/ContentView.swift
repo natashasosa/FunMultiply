@@ -90,8 +90,6 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            
-
         }
     }
 }
