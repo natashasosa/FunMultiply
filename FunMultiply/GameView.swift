@@ -28,7 +28,7 @@ struct GameView: View {
                     .ignoresSafeArea()
             
             VStack(spacing: 30) {
-                Text("Ready, set, go!")
+                Text("Ready, set, go!!")
                     .padding(.horizontal, 50)
                     .font(.title.weight(.black))
                     .foregroundColor(Color(red: 0.98, green: 0.67, blue: 0.09))
